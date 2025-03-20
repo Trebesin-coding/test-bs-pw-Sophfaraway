@@ -9,14 +9,14 @@ def main():
     response = requests.get(url)
 
     soup = BeautifulSoup(response.content, "html.parser")
-    # comment
+    # comment U: ???
 
-    ingredients = soup.find_all(class_ = "stuff")
+    ingredients = soup.find_all(class_="stuff")
     print(ingredients)
 
     list = []
 
-    for i in ingredients :
+    for i in ingredients:
         list.append(i.text)
     print(list)
 
@@ -24,18 +24,13 @@ def main():
         print(list[k])
 
     # for k in range(5):
-    with open("recept.json","w") as f:
+    with open("recept.json", "w") as f:
         json.dump(list[0], f, indent=4, ensure_ascii=False)
         json.dump(list[1], f, indent=4, ensure_ascii=False)
         json.dump(list[2], f, indent=4, ensure_ascii=False)
         json.dump(list[3], f, indent=4, ensure_ascii=False)
-    
-
-
-
-
-
-
+    # U: elegantnějším řešením by bylo vytvořit nový list pro správné prvky a ten celý vypsat do JSON
+    # v tomto řešení není JSON ve správném formátu
 
 
 if __name__ == "__main__":
